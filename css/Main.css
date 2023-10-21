@@ -49,3 +49,13 @@
   width: 100%;
   padding: 30px;
 }
+.table-box table {
+  width: 100%;
+}
+.table-box table tr th {
+  border-right: 1px solid #ccc;
+  padding: 30px 0px 0px;
+  font-family: verdana;
+  font-family: 120px;
+  border-bottom: 1px solid#ccc;
+}
