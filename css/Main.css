@@ -25,3 +25,12 @@
   width: 100%;
   height: 100px;
 }
+.upper-btn-box .right-box i {
+  width: 25px;
+  color: #4286f5;
+  padding: 10px;
+}
+.upper-btn-box .right-box button {
+  font-size: 25px;
+  background-color: #4286f5;
+}
