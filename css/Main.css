@@ -76,3 +76,18 @@ table-box table tr td {
   color: white;
   padding: 5px 0px 5px;
 }
+/*start modal coding*/
+.modal{
+  width:0%;
+  height:auto;
+  background-color: #f2f2ff;
+  position:fixed;
+  top: 60%;
+  left:50%;
+  transform: translate(-50%,-50%);
+  display:flex;
+  border-top:20px groove #4286f5;
+  opacity:0;
+  z-index:-1;
+  transition:0.5s ease-in-out;
+}
