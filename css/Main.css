@@ -8,3 +8,20 @@
   padding: 10px 30px;
   background-color: #ee534f;
 }
+.header h5 {
+  font-weight: bold;
+  font-family: Verdana;
+  font-size: 28px;
+  color: white;
+}
+/* upper button box */
+.upper-btn-box {
+  width: 100%;
+  height: 100px;
+  display: flex;
+  padding: 30px;
+}
+.upper-btn-box .left-box {
+  width: 100%;
+  height: 100px;
+}
