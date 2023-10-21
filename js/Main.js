@@ -33,3 +33,12 @@ var imgUrl;
 
 /* end all global variable*/
 
+/* start register coding */
+
+registerForm.onsubmit = function (e) {
+  e.preventDefault();
+  registrationData();
+  getDataFromLocal();
+  registerForm.reset("");
+  closeBtn.click();
+};
