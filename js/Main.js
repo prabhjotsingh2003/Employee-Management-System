@@ -42,3 +42,22 @@ registerForm.onsubmit = function (e) {
   registerForm.reset("");
   closeBtn.click();
 };
+if (localStorage.getItem("userData") != null) {
+  userData = JSON.parse(localStorage.getItem("userData"));
+}
+console.log(userData);
+
+function registrationData() {
+  userData.push({
+    id: idEl.value,
+    name: nameEl.value,
+    l_name: l_nameEl.value,
+    email: emailEl.value,
+    officeCode: officeEl.value,
+    jobTitle: jobTitleEl.value,
+    profilePic: imgUrl == undefined ? "img/emp1.jpeg" : imgUrl,
+  });
+  var userString = JSON.stringify(userData);
+  localStorage.setItem("userData", userString);
+  swal("Good job!", "Registration Success!", "success");
+}
