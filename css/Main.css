@@ -147,3 +147,18 @@ table-box table tr td {
   right:60px;
   opacity:0;
 }
+.modal .left-modal .img-box img {
+   border-radius:10px;
+}
+.modal .right-modal{
+  width:70%;
+  height:100%;
+  border-left:5px groove #4286f5;
+  padding:30px;
+}
+.modal .right-modal .input-box{
+  width: 100%;
+  display:flex;
+  justify-content: space-between;
+
+}
