@@ -91,3 +91,21 @@ table-box table tr td {
   z-index:-1;
   transition:0.5s ease-in-out;
 }
+.modal.active{
+  opacity:1;
+  z-index:1;
+  width:60%;
+}
+.modal .close-icon{
+  position:absolute;
+  right:-25px;
+  top:-45px;
+  font-size: 30px;
+  padding:10px;
+  color:#ee534f;
+}
+.modal .left-modal{
+  background-color: #f2f2ff;
+  width: 30%;
+  height: 100%;
+}
