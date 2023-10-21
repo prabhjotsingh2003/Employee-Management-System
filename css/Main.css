@@ -59,3 +59,20 @@
   font-family: 120px;
   border-bottom: 1px solid#ccc;
 }
+table-box table tr td {
+  border-right: 1px solid #ccc;
+  padding: 10px 0px 5px;
+  text-align: center;
+  font-family: verdana;
+  border-bottom: 1px solid#ccc;
+}
+.table-box table tr td button {
+  border: none;
+  width: 40%;
+  outline: none;
+  background-color: #4286f5;
+  font-size: 18px;
+  font-family: verdana;
+  color: white;
+  padding: 5px 0px 5px;
+}
