@@ -47,8 +47,9 @@ if (localStorage.getItem("userData") != null) {
 }
 console.log(userData);
 
+
 function registrationData() {
-  userData.push({
+  const newEntry = {
     id: idEl.value,
     name: nameEl.value,
     l_name: l_nameEl.value,
@@ -56,11 +57,31 @@ function registrationData() {
     officeCode: officeEl.value,
     jobTitle: jobTitleEl.value,
     profilePic: imgUrl == undefined ? "img/emp1.jpeg" : imgUrl,
-  });
+  };
+
+  // Check if it's a new entry or an update
+  const index = userData.findIndex((item) => item.id === newEntry.id);
+
+  if (index !== -1) {
+    // Update the existing entry
+    userData[index] = newEntry;
+    tableData.querySelector(`[index="${index}"]`).remove(); // Remove the old row
+  } else {
+    // Add a new entry
+    userData.push(newEntry);
+  }
+
   var userString = JSON.stringify(userData);
   localStorage.setItem("userData", userString);
+
+  // Clear the table and re-populate it with the updated data
+  tableData.innerHTML = "";
+  getDataFromLocal();
+
   swal("Good job!", "Registration Success!", "success");
 }
+
+
 
 //start returning data on page from localstorage
 var tableData = document.querySelector("#table-data");
@@ -136,22 +157,33 @@ const getDataFromLocal = () => {
       emailEl.value = email;
       officeEl.value = officeCode;
       jobTitleEl.value = jobTitle;
-      if (imgTag) {
-        profile_pic.src = profilePic;
-      }
-      updateBtn.onclick = function (e) {
-        userData[index] = {
-          id: idEl.value,
-          name: nameEl.value,
-          l_name: l_nameEl.value,
-          email: emailEl.value,
+     
+         profilePic: uploadPic.value == ""
+           ? profile_pic
+             ? profile_pic.src
+             : imgUrl
+           : imgUrl,
+           (updateBtn.onclick = function (e) {
+             userData[index] = {
+               id: idEl.value,
+               name: nameEl.value,
+               l_name: l_nameEl.value,
+               email: emailEl.value,
+               officeCode: officeEl.value,
+               jobTitle: jobTitleEl.value,
+               profilePic:
+                 uploadPic.value == ""
+                   ? profile_pic
+                     ? profile_pic.src
+                     : imgUrl
+                   : imgUrl,
+             };
+             localStorage.setItem("userData", JSON.stringify(userData));
+             tableData.innerHTML = " ";
+             getDataFromLocal();
 
-          officeCode: officeEl.value,
-          jobTitle: jobTitleEl.value,
-          profilePic: uploadPic.value == "" ? profile_pic.src : imgUrl,
-        };
-        localStorage.setItem("userData", JSON.stringify(userData));
-      };
+             swal("Updated!", "Data has been updated.", "success");
+           });
     };
   }
 };
@@ -163,8 +195,12 @@ uploadPic.onchange = function () {
     var fReader = new FileReader();
     fReader.onload = function (e) {
       imgUrl = e.target.result;
-      profile_pic.src = imgUrl;
-      console.log(imgUrl);
+       profilePic: uploadPic.value == ""
+         ? profile_pic
+           ? profile_pic.src
+           : imgUrl
+         : imgUrl,
+         console.log(imgUrl);
     };
     fReader.readAsDataURL(uploadPic.files[0]);
   } else {
@@ -178,8 +214,9 @@ var searchEl = document.querySelector("#empId");
 searchEl.oninput = function () {
   searchFun();
 }
-function searchFuc() {
+function searchFun() {
   var tr = tableData.querySelectorAll("TR");
+  var filter = searchEl.value.toLowerCase();
   var id = searchEl.value.toLowerCase();
   var i;
   for (i = 0; i < tr.length; i++){
@@ -187,7 +224,7 @@ function searchFuc() {
     var name = tr[i].getElementsByTagName("TD")[3].innerHTML;
     var l_name = tr[i].getElementsByTagName("TD")[4].innerHTML;
     var email = tr[i].getElementsByTagName("TD")[5].innerHTML;
-    var officode = tr[i].getElementsByTagName("TD")[6].innerHTML;
+    var officecode = tr[i].getElementsByTagName("TD")[6].innerHTML;
     var jobtitle = tr[i].getElementsByTagName("TD")[7].innerHTML;
     if (id.toLowerCase().indexOf(filter) > -1) {
       tr[i].style.display = "";
@@ -215,22 +252,24 @@ function searchFuc() {
 }
 // start clear all data
 var dellAllBtn = document.querySelector("#del-all-btn");
-var allDelBox = document.querySelector("#del-all-btn");
-dellAllBtn.addEventListene('click', () => {
+var allDelBox = document.querySelector("#del-all-box");
+dellAllBtn.addEventListener('click', () => {
   if (allDelBox.checked == true) {
      swal({
        title: "Are you sure?",
-       text: "Once deleted, you will not be able to recover this imaginary file!",
+       text: "Once deleted, you will not be able to recover this data",
        icon: "warning",
        buttons: true,
        dangerMode: true,
      }).then((willDelete) => {
-       if (willDelete) { 
-         swal("Poof! Your imaginary file has been deleted!", {
+       if (willDelete) {
+         localStorage.removeItem("userData");
+         tableData.innerHTML = ""; // Clear the displayed data
+         swal("Poof! This has been deleted!", {
            icon: "success",
          });
        } else {
-         swal("Your imaginary file is safe!");
+         swal("Your data is safe!");
        }
      });
   }

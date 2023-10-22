@@ -1,38 +1,46 @@
+/* Reset CSS */
 * {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
 }
+
+/* Header Styles */
 .header {
   width: 100%;
   padding: 10px 30px;
   background-color: #ee534f;
 }
+
 .header h5 {
   font-weight: bold;
   font-family: Verdana;
   font-size: 28px;
   color: white;
 }
-/* upper button box */
+
+/* Upper Button Box Styles */
 .upper-btn-box {
   width: 100%;
   height: 100px;
   display: flex;
   padding: 30px;
 }
+
 .upper-btn-box .left-box {
   width: 100%;
   height: 100px;
-  display:flex;
+  display: flex;
   align-items: center;
-  cursor:pointer;
+  cursor: pointer;
 }
-.upper-btn-box .left-box input[type="checkbox"]{
-  width:30px;
-  height:30px;
-  cursor:pointer;
+
+.upper-btn-box .left-box input[type="checkbox"] {
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
 }
+
 .upper-btn-box .left-box button,
 .upper-btn-box .right-box button {
   border: none;
@@ -44,20 +52,24 @@
   color: white;
   margin: 0px 15px;
 }
+
 .upper-btn-box .right-box {
   width: 50%;
   height: 100%;
   display: flex;
 }
+
 .upper-btn-box .right-box i {
   width: 25px;
   color: #4286f5;
   padding: 10px;
 }
+
 .upper-btn-box .right-box button {
   font-size: 25px;
   background-color: #4286f5;
 }
+
 .upper-btn-box .right-box input {
   width: 70%;
   padding: 13px;
@@ -68,28 +80,33 @@
   font-family: verdana;
   font-weight: bold;
 }
-/* start table coding*/
+
+/* Table Styles */
 .table-box {
   width: 100%;
   padding: 30px;
 }
+
 .table-box table {
   width: 100%;
 }
+
 .table-box table tr th {
   border-right: 1px solid #ccc;
   padding: 30px 0px 0px;
   font-family: verdana;
-  font-family: 120px;
-  border-bottom: 1px solid#ccc;
+  font-size: 20px;
+  border-bottom: 1px solid #ccc;
 }
+
 .table-box table tr td {
   border-right: 1px solid #ccc;
   padding: 10px 0px 5px;
   text-align: center;
   font-family: verdana;
-  border-bottom: 1px solid#ccc;
+  border-bottom: 1px solid #ccc;
 }
+
 .table-box table tr td button {
   border: none;
   width: 40%;
@@ -100,7 +117,8 @@
   color: white;
   padding: 5px 0px 5px;
 }
-/*start modal coding*/
+
+/* Modal Styles */
 .modal {
   width: 0%;
   height: auto;
@@ -115,11 +133,13 @@
   z-index: -1;
   transition: 0.5s ease-in-out;
 }
+
 .modal.active {
   opacity: 1;
   z-index: 1;
   width: 60%;
 }
+
 .modal .close-icon {
   position: absolute;
   right: -25px;
@@ -128,11 +148,13 @@
   padding: 10px;
   color: #ee534f;
 }
+
 .modal .left-modal {
   background-color: #f2f2ff;
   width: 30%;
   height: 100%;
 }
+
 .modal .left-modal .img-box {
   width: 100%;
   height: 300px;
@@ -140,6 +162,7 @@
   padding: 30px;
   position: relative;
 }
+
 .modal .left-modal .img-box i {
   font-size: 30px;
   padding: 10px;
@@ -148,6 +171,7 @@
   right: 40px;
   color: #4286f5;
 }
+
 .modal .left-modal .img-box input {
   width: 40px;
   height: 40px;
@@ -156,26 +180,31 @@
   right: 60px;
   opacity: 0;
 }
+
 .modal .left-modal .img-box img {
   border-radius: 10px;
 }
+
 .modal .right-modal {
   width: 70%;
   height: 100%;
   border-left: 5px groove #4286f5;
   padding: 30px;
 }
+
 .modal .right-modal .input-box {
   width: 100%;
   display: flex;
   justify-content: space-between;
 }
+
 .modal .right-modal .input-box label {
   font-size: 22px;
   font-weight: bold;
   font-family: sans-serif;
   margin: 20px 0px;
 }
+
 .modal .right-modal .input-box input {
   width: 70%;
   margin: 10px 0px;
@@ -185,6 +214,7 @@
   background-color: transparent;
   border-bottom: 3px solid #4286f5;
 }
+
 .modal .right-modal .input-box button {
   border: none;
   width: 48%;
@@ -196,6 +226,75 @@
   color: white;
   margin: 10px 10px;
 }
+
 .modal .right-modal .input-box button:disabled {
-  filter: greyscale(80%);
+  filter: grayscale(80%);
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+  .header h5 {
+    font-size: 24px;
+  }
+
+  .upper-btn-box .left-box {
+    flex-direction: column;
+  }
+
+  .upper-btn-box .right-box {
+    width: 100%;
+  }
+}
+
+@media (max-width: 576px) {
+  .header h5 {
+    font-size: 20px;
+  }
+
+  .upper-btn-box .left-box {
+    padding: 10px;
+  }
+
+  .upper-btn-box .left-box button,
+  .upper-btn-box .right-box button {
+    font-size: 16px;
+  }
+
+  .upper-btn-box .right-box i {
+    font-size: 20px;
+  }
+
+  .upper-btn-box .right-box input {
+    font-size: 14px;
+  }
+
+  .table-box table tr th {
+    font-size: 14px;
+    padding: 20px 0px 0px;
+  }
+
+  .table-box table tr td {
+    font-size: 12px;
+    padding: 5px 0px 2px;
+  }
+
+  .table-box table tr td button {
+    font-size: 14px;
+  }
+
+  .modal .right-modal .input-box label {
+    font-size: 18px;
+  }
+
+  .modal .right-modal .input-box input {
+    font-size: 14px;
+  }
+
+  .modal .right-modal .input-box button {
+    font-size: 16px;
+  }
+
+  .modal .right-modal .input-box button:disabled {
+    font-size: 16px;
+  }
 }
