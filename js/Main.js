@@ -47,7 +47,6 @@ if (localStorage.getItem("userData") != null) {
 }
 console.log(userData);
 
-
 function registrationData() {
   const newEntry = {
     id: idEl.value,
@@ -80,8 +79,6 @@ function registrationData() {
 
   swal("Good job!", "Registration Success!", "success");
 }
-
-
 
 //start returning data on page from localstorage
 var tableData = document.querySelector("#table-data");
@@ -157,33 +154,33 @@ const getDataFromLocal = () => {
       emailEl.value = email;
       officeEl.value = officeCode;
       jobTitleEl.value = jobTitle;
-     
-         profilePic: uploadPic.value == ""
-           ? profile_pic
-             ? profile_pic.src
-             : imgUrl
-           : imgUrl,
-           (updateBtn.onclick = function (e) {
-             userData[index] = {
-               id: idEl.value,
-               name: nameEl.value,
-               l_name: l_nameEl.value,
-               email: emailEl.value,
-               officeCode: officeEl.value,
-               jobTitle: jobTitleEl.value,
-               profilePic:
-                 uploadPic.value == ""
-                   ? profile_pic
-                     ? profile_pic.src
-                     : imgUrl
-                   : imgUrl,
-             };
-             localStorage.setItem("userData", JSON.stringify(userData));
-             tableData.innerHTML = " ";
-             getDataFromLocal();
 
-             swal("Updated!", "Data has been updated.", "success");
-           });
+      profilePic: uploadPic.value == ""
+        ? profile_pic
+          ? profile_pic.src
+          : imgUrl
+        : imgUrl,
+        (updateBtn.onclick = function (e) {
+          userData[index] = {
+            id: idEl.value,
+            name: nameEl.value,
+            l_name: l_nameEl.value,
+            email: emailEl.value,
+            officeCode: officeEl.value,
+            jobTitle: jobTitleEl.value,
+            profilePic:
+              uploadPic.value == ""
+                ? profile_pic
+                  ? profile_pic.src
+                  : imgUrl
+                : imgUrl,
+          };
+          localStorage.setItem("userData", JSON.stringify(userData));
+          tableData.innerHTML = " ";
+          getDataFromLocal();
+
+          swal("Updated!", "Data has been updated.", "success");
+        });
     };
   }
 };
@@ -195,31 +192,31 @@ uploadPic.onchange = function () {
     var fReader = new FileReader();
     fReader.onload = function (e) {
       imgUrl = e.target.result;
-       profilePic: uploadPic.value == ""
-         ? profile_pic
-           ? profile_pic.src
-           : imgUrl
-         : imgUrl,
-         console.log(imgUrl);
+      profilePic: uploadPic.value == ""
+        ? profile_pic
+          ? profile_pic.src
+          : imgUrl
+        : imgUrl,
+        console.log(imgUrl);
     };
     fReader.readAsDataURL(uploadPic.files[0]);
   } else {
     alert("File Size Is Too Large");
   }
-}
+};
 
 //start search coding
 
 var searchEl = document.querySelector("#empId");
 searchEl.oninput = function () {
   searchFun();
-}
+};
 function searchFun() {
   var tr = tableData.querySelectorAll("TR");
   var filter = searchEl.value.toLowerCase();
   var id = searchEl.value.toLowerCase();
   var i;
-  for (i = 0; i < tr.length; i++){
+  for (i = 0; i < tr.length; i++) {
     var id = tr[i].getElementsByTagName("TD")[2].innerHTML;
     var name = tr[i].getElementsByTagName("TD")[3].innerHTML;
     var l_name = tr[i].getElementsByTagName("TD")[4].innerHTML;
@@ -228,53 +225,44 @@ function searchFun() {
     var jobtitle = tr[i].getElementsByTagName("TD")[7].innerHTML;
     if (id.toLowerCase().indexOf(filter) > -1) {
       tr[i].style.display = "";
-    }
-    else if (name.toLowerCase().indexOf(filter) > -1) {
+    } else if (name.toLowerCase().indexOf(filter) > -1) {
       tr[i].style.display = "";
-    }
-    else if (l_name.toLowerCase().indexOf(filter) > -1) {
+    } else if (l_name.toLowerCase().indexOf(filter) > -1) {
       tr[i].style.display = "";
-    }
-    else if (email.toLowerCase().indexOf(filter) > -1) {
+    } else if (email.toLowerCase().indexOf(filter) > -1) {
       tr[i].style.display = "";
-    }
-    else if (officecode.toLowerCase().indexOf(filter) > -1) {
+    } else if (officecode.toLowerCase().indexOf(filter) > -1) {
       tr[i].style.display = "";
-    }
-    else if (jobtitle.toLowerCase().indexOf(filter) > -1) {
+    } else if (jobtitle.toLowerCase().indexOf(filter) > -1) {
       tr[i].style.display = "";
-    }
-    else {
+    } else {
       tr[i].style.display = "none";
     }
-    
   }
 }
 // start clear all data
 var dellAllBtn = document.querySelector("#del-all-btn");
 var allDelBox = document.querySelector("#del-all-box");
-dellAllBtn.addEventListener('click', () => {
+dellAllBtn.addEventListener("click", () => {
   if (allDelBox.checked == true) {
-     swal({
-       title: "Are you sure?",
-       text: "Once deleted, you will not be able to recover this data",
-       icon: "warning",
-       buttons: true,
-       dangerMode: true,
-     }).then((willDelete) => {
-       if (willDelete) {
-         localStorage.removeItem("userData");
-         tableData.innerHTML = ""; // Clear the displayed data
-         swal("Poof! This has been deleted!", {
-           icon: "success",
-         });
-       } else {
-         swal("Your data is safe!");
-       }
-     });
-  }
-  else {
+    swal({
+      title: "Are you sure?",
+      text: "Once deleted, you will not be able to recover this data",
+      icon: "warning",
+      buttons: true,
+      dangerMode: true,
+    }).then((willDelete) => {
+      if (willDelete) {
+        localStorage.removeItem("userData");
+        tableData.innerHTML = ""; // Clear the displayed data
+        swal("Poof! This has been deleted!", {
+          icon: "success",
+        });
+      } else {
+        swal("Your data is safe!");
+      }
+    });
+  } else {
     swal("Check The Box", "Please check the box to delete data", "warning");
   }
-}
-)
+});
